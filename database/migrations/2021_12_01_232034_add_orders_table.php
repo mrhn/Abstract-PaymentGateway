@@ -17,7 +17,7 @@ class AddOrdersTable extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->string('gateway');
-            $table->string('transactionId')->nullable();
+            $table->string('transaction_id')->nullable();
             $table->string('status')->default(Order::STATUS_PENDING);
             $table->integer('price'); // in øre
 
