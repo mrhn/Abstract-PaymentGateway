@@ -85,7 +85,7 @@ class PaymentGatewayService
 
     private function checkTransactionId(Order $order): void
     {
-        if (! $order->transactionId) {
+        if (! $order->transaction_id) {
             throw new MissingTransactionIdException();
         }
     }

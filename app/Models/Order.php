@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Model;
  * @package App\Models
  *
  * @property string $gateway
- * @property string|null $transactionId
+ * @property string|null $transaction_id
  * @property string $status
  * @property PaymentGatewayService $payment_gateway
  */
@@ -36,8 +36,45 @@ class Order extends Model
         'price',
     ];
 
-    public function getPaymentGatewayAttribute()
+    /**
+     * Attributes
+     */
+
+    public function getPaymentGatewayAttribute(): PaymentGatewayService
     {
         return resolve($this->gateway);
+    }
+
+    /**
+     * Scopes
+     */
+
+    public function scopePending($query)
+    {
+        $query->where('status', self::STATUS_PENDING);
+    }
+
+    /**
+     * PaymentGateway Helpers
+     */
+
+    public function reserve(): void
+    {
+        $this->payment_gateway->reserve($this);
+    }
+
+    public function capture(): void
+    {
+        $this->payment_gateway->capture($this);
+    }
+
+    public function refund(): void
+    {
+        $this->payment_gateway->refund($this);
+    }
+
+    public function status(): void
+    {
+        $this->payment_gateway->status($this);
     }
 }

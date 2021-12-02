@@ -32,8 +32,8 @@ class AppServiceProvider extends ServiceProvider
             /** @var MobilePayGateway $mobilePayGateway */
             $mobilePayGateway = resolve(MobilePayGateway::class);
             return new PaymentGatewayService(
-                $mobilePayGateway->setApiKey(env('MOBILEPAY_API_KEY'))
-                    ->setApiSecret(env('MOBILEPAY_API_SECRET'))
+                $mobilePayGateway->setApiKey(env('MOBILEPAY_API_KEY', ''))
+                    ->setApiSecret(env('MOBILEPAY_API_SECRET', ''))
             );
         });
 
@@ -41,7 +41,7 @@ class AppServiceProvider extends ServiceProvider
             /** @var QuickPayGateway $quickPayGateway */
             $quickPayGateway = resolve(QuickPayGateway::class);
             return new PaymentGatewayService(
-                $quickPayGateway->setApiToken(env('QUICKPAY_API_TOKEN'))
+                $quickPayGateway->setApiToken(env('QUICKPAY_API_TOKEN', ''))
             );
         });
     }

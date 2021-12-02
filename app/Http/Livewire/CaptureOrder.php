@@ -17,7 +17,7 @@ class CaptureOrder extends Component
     }
 
     public function capture() {
-
+        $this->order->capture();
     }
 
     public function render()

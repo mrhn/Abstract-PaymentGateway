@@ -20,7 +20,7 @@ class MobilePayGateway implements PaymentGatewayImplementation
      */
     public function reserve(Order $order): string
     {
-        // TODO: Implement reserve() method.
+        throw new \Exception('Not implemented mobilepay reserve');
     }
 
     /**
@@ -28,7 +28,7 @@ class MobilePayGateway implements PaymentGatewayImplementation
      */
     public function capture(Order $order): void
     {
-        // TODO: Implement capture() method.
+        throw new \Exception('Not implemented mobilepay capture');
     }
 
     /**
@@ -36,7 +36,7 @@ class MobilePayGateway implements PaymentGatewayImplementation
      */
     public function refund(Order $order): void
     {
-        // TODO: Implement refund() method.
+        throw new \Exception('Not implemented mobilepay refund');
     }
 
     /**
@@ -44,7 +44,7 @@ class MobilePayGateway implements PaymentGatewayImplementation
      */
     public function status(Order $order): string
     {
-        // TODO: Implement status() method.
+        throw new \Exception('Not implemented mobilepay status');
     }
 
     public function setApiKey(string $key): self
